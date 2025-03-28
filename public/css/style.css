@@ -1,0 +1,241 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+#filter-panel {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+#filter-panel label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+#filter-panel button {
+    margin: 4px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+#filter-panel button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+#route-panel,
+#route-reset,
+#cafe-detail-panel {
+    z-index: 999;
+    background: white;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    width: 260px;
+}
+
+#route-panel {
+    display: none;
+    bottom: 20px;
+    left: 20px;
+}
+
+#route-panel input,
+#route-panel select {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#route-panel label {
+    font-weight: bold;
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+#route-reset {
+    display: none;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+}
+
+#cafe-detail-panel {
+    display: none;
+    bottom: 20px;
+    left: 20px;
+}
+
+#cafe-detail-panel h4 {
+    margin-top: 0;
+}
+
+#cafe-detail-image {
+    width: 100%;
+    border-radius: 8px;
+    margin: 10px 0;
+    display: none;
+}
+
+#route-panel button,
+#route-reset button,
+#cafe-directions-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+#build-route {
+    background-color: #007bff;
+    color: white;
+}
+
+#clear-route,
+#cancel-route {
+    background-color: #dc3545;
+    color: white;
+}
+
+#cafe-directions-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+#go-to-user {
+    position: absolute;
+    bottom: 25px;
+    right: 60px;
+    z-index: 1000;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#go-to-user:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+
+    #route-panel,
+    #route-reset,
+    #cafe-detail-panel {
+        width: calc(100% - 40px);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #filter-panel {
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        text-align: center;
+    }
+
+    #go-to-user {
+        right: 20px;
+    }
+}
+
+#search-panel {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: white;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 320px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+#search-results {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#search-results li {
+    padding: 6px 8px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#search-results li:hover {
+    background: #f0f0f0;
+}
+
+.autocomplete-list {
+    position: absolute;
+    z-index: 1000;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 2px 0 10px 0;
+    width: 100%;
+}
+
+.autocomplete-list li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+    background-color: #f1f1f1;
+}

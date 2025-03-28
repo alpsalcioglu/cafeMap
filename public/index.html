@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Location Finder</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="search-panel">
+        <input type="text" id="search-input" placeholder="Search place...">
+        <ul id="search-results"></ul>
+    </div>
+
+    <!-- Category Filter -->
+    <div id="filter-panel">
+        <label>Filter by Type:</label>
+        <button class="filter-btn active" data-type="ALL">All</button>
+        <button class="filter-btn" data-type="cafe">Cafe</button>
+        <button class="filter-btn" data-type="market">Market</button>
+        <button class="filter-btn" data-type="hairdresser">Hairdresser</button>
+    </div>
+
+    <!-- Cafe Detail Panel -->
+    <div id="cafe-detail-panel">
+        <h4 id="cafe-detail-name"></h4>
+        <img id="cafe-detail-image" src="" alt="Image">
+        <p id="cafe-detail-address"></p>
+        <button id="cafe-directions-btn">Get Directions</button>
+    </div>
+
+    <!-- Route Panel -->
+    <div id="route-panel">
+        <h4>Directions</h4>
+        <label for="from-input">From:</label>
+        <input id="from-input" placeholder="Search origin..." autocomplete="off" />
+        <ul id="from-results" class="autocomplete-list"></ul>
+
+        <label for="to-input">To:</label>
+        <input id="to-input" placeholder="Search destination..." autocomplete="off" />
+        <ul id="to-results" class="autocomplete-list"></ul>
+
+        <label for="travel-mode">Travel mode:</label>
+        <select id="travel-mode">
+            <option value="DRIVING" selected>Driving</option>
+            <option value="WALKING">Walking</option>
+        </select>
+
+        <p id="route-distance">Distance: --</p>
+        <p id="route-duration">Duration: --</p>
+        <button id="build-route">Build Route</button>
+        <button id="clear-route">Cancel</button>
+    </div>
+
+    <!-- Route Info Panel -->
+    <div id="route-reset">
+        <div><strong>Remaining Time:</strong> <span id="remaining-duration">--</span></div>
+        <div><strong>Remaining Distance:</strong> <span id="remaining-distance">--</span></div>
+        <div><strong>Total Distance:</strong> <span id="total-distance">--</span></div>
+        <button id="cancel-route">Cancel Route</button>
+    </div>
+
+    <!-- My Location Button -->
+    <button id="go-to-user">📍</button>
+
+    <!-- Scripts (Google Maps + MarkerClusterer + Custom Script) -->
+    <script src="/script.js"></script>
+    <script>
+        fetch('/google-maps-key')
+            .then(res => res.json())
+            .then(data => {
+                const script = document.createElement('script');
+                script.src = `https://maps.googleapis.com/maps/api/js?key=${data.key}&callback=initMap`;
+                script.async = true;
+                script.defer = true;
+                document.body.appendChild(script);
+            });
+    </script>
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+</body>
+
+</html>
